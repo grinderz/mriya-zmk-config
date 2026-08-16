@@ -6,6 +6,7 @@
 
 /dts-v1/;
 #include <nordic/nrf52840_qiaa.dtsi>
+#include <common/nordic/nrf52840_uf2_boot_mode.dtsi>
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
@@ -19,7 +20,6 @@
 		zephyr,code-partition = &code_partition;
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
-		zmk,kscan = &kscan0;
 		zmk,physical-layout = &mriya_layout;
 		zmk,battery = &vbatt;
 	};
@@ -38,7 +38,6 @@
 
 	kscan0: kscan {
 		compatible = "zmk,kscan-gpio-matrix";
-		label = "KSCAN";
 
 		wakeup-source;
 
@@ -56,13 +55,11 @@
 		compatible = "gpio-leds";
 		blue_led: led_0 {
 			gpios = <&gpio0 23 GPIO_ACTIVE_HIGH>;
-			label = "Blue LED";
 		};
 	};
 
 	vbatt: vbatt {
 		compatible = "zmk,battery-voltage-divider";
-		label = "VBATT";
 		io-channels = <&adc 0>;
 		output-ohms = <2000000>;
 		full-ohms = <(2000000 + 806000)>;
@@ -88,11 +85,7 @@
 };
 
 zephyr_udc0: &usbd {
-    status = "okay";
-    cdc_acm_uart: cdc_acm_uart {
-        compatible = "zephyr,cdc-acm-uart";
-        label = "CDC_ACM_0";
-    };
+	status = "okay";
 };
 
 &flash0 {
@@ -106,11 +99,9 @@ zephyr_udc0: &usbd {
 		#size-cells = <1>;
 
 		sd_partition: partition@0 {
-			label = "softdevice";
 			reg = <0x00000000 0x00026000>;
 		};
 		code_partition: partition@26000 {
-			label = "code_partition";
 			reg = <0x00026000 0x000c6000>;
 		};
 
@@ -124,12 +115,10 @@ zephyr_udc0: &usbd {
 		 * if enabled.
 		 */
 		storage_partition: partition@ec000 {
-			label = "storage";
 			reg = <0x000ec000 0x00008000>;
 		};
 
 		boot_partition: partition@f4000 {
-			label = "adafruit_boot";
 			reg = <0x000f4000 0x0000c000>;
 		};
 	};

@@ -1,5 +1,16 @@
+---
 include:
   - board: mriya_left
+    artifact-name: mriya46_choc_left
   - board: mriya_right
-  - board: nice_nano_v2
+    artifact-name: mriya46_choc_right
+  - board: mriya_left
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: mriya46_choc_left_studio
+  - board: mriya_left
     shield: settings_reset
+    artifact-name: mriya46_choc_left_settings_reset
+  - board: mriya_right
+    shield: settings_reset
+    artifact-name: mriya46_choc_right_settings_reset
