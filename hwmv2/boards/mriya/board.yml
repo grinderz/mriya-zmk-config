@@ -1,0 +1,9 @@
+boards:
+  - name: mriya_left
+    vendor: others
+    socs:
+      - name: nrf52840
+  - name: mriya_right
+    vendor: others
+    socs:
+      - name: nrf52840

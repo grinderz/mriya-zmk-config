@@ -1,0 +1,10 @@
+/*
+ * Copyright (c) 2023 Andrei Gaevskii
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * Single source of truth for the physical layout lives in the legacy board
+ * directory; this HWMv2 copy just includes it.
+ */
+
+#include "../../../config/boards/arm/mriya/mriya-layouts.dtsi"
